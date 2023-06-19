@@ -1,7 +1,12 @@
+import Header from 'components/Header'
+
 export default function App() {
   return (
-    <div>
-      <h1>Home</h1>
-    </div>
+    <>
+      <Header />
+      <main className="mt-20">
+        <h1>Home</h1>
+      </main>
+    </>
   )
 }
