@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import TextField from './TextField'
 import TextareaField from './TextareaField'
 import IFeedback from '../interfaces/IFeedback'
+import Loading from './Loading'
 
 export default function Form() {
   const [formValues, setFormValues] = useState({
@@ -10,6 +11,8 @@ export default function Form() {
     date: '',
     description: ''
   })
+
+  const [isLoading, setIsLoading] = useState(false)
 
   const isTextareaDisabled = (): boolean => {
     const { employeeName, department } = formValues
@@ -40,6 +43,8 @@ export default function Form() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
+    setIsLoading(true)
+
     const localFeedback: IFeedback[] = JSON.parse(
       localStorage.getItem('feedback') as string
     )
@@ -50,6 +55,8 @@ export default function Form() {
       localFeedback.push(formValues)
       localStorage.setItem('feedback', JSON.stringify(localFeedback))
     }
+
+    setTimeout(() => setIsLoading(false), 1000)
   }
 
   return (
@@ -91,10 +98,10 @@ export default function Form() {
 
       <button
         type="submit"
-        className="rounded bg-sky-600 p-2 font-bold disabled:cursor-not-allowed disabled:bg-slate-600  disabled:text-slate-400"
+        className="flex justify-center rounded bg-sky-600 p-2 font-bold  disabled:cursor-not-allowed disabled:bg-slate-600 disabled:text-slate-400"
         disabled={isButtonDisabled()}
       >
-        Enviar feedback
+        {isLoading ? <Loading /> : 'Enviar'}
       </button>
     </form>
   )
