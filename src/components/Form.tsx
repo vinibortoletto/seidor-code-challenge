@@ -48,18 +48,23 @@ export default function Form() {
     setIsLoading(true)
 
     const localFeedback: IFeedback[] = JSON.parse(
-      localStorage.getItem('feedback') as string
+      localStorage.getItem('feedbacks') as string
     )
 
     if (!localFeedback) {
-      localStorage.setItem('feedback', JSON.stringify([formValues]))
+      localStorage.setItem(
+        'feedbacks',
+        JSON.stringify([{ ...formValues, id: 1 }])
+      )
     } else {
-      localFeedback.push(formValues)
-      localStorage.setItem('feedback', JSON.stringify(localFeedback))
+      localFeedback.push({ ...formValues, id: localFeedback.length + 1 })
+      localStorage.setItem('feedbacks', JSON.stringify(localFeedback))
     }
 
-    setTimeout(() => setIsLoading(false), 1000)
-    navigate('/feedbacks')
+    setTimeout(() => {
+      setIsLoading(false)
+      navigate('/feedbacks')
+    }, 1000)
   }
 
   return (
