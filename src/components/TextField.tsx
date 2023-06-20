@@ -22,7 +22,7 @@ export default function TextField(props: IProps) {
       <input
         id={id}
         type={type}
-        className="rounded bg-slate-700 p-2"
+        className="rounded border border-slate-600 bg-slate-800 p-2 placeholder:text-slate-500"
         placeholder={placeholder}
         value={value}
         onChange={onChange}
