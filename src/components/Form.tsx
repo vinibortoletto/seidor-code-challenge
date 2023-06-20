@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import TextField from './TextField'
 import TextareaField from './TextareaField'
+import IFeedback from '../interfaces/IFeedback'
 
 export default function Form() {
   const [formValues, setFormValues] = useState({
@@ -39,7 +40,16 @@ export default function Form() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
-    localStorage.setItem('feedback', JSON.stringify(formValues))
+    const localFeedback: IFeedback[] = JSON.parse(
+      localStorage.getItem('feedback') as string
+    )
+
+    if (!localFeedback) {
+      localStorage.setItem('feedback', JSON.stringify([formValues]))
+    } else {
+      localFeedback.push(formValues)
+      localStorage.setItem('feedback', JSON.stringify(localFeedback))
+    }
   }
 
   return (
