@@ -1,6 +1,6 @@
 interface IProps {
   label: string
-  placeholder: string
+  placeholder?: string
   type: string
   id: string
   value: string

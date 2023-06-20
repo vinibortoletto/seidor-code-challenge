@@ -6,6 +6,7 @@ export default function Form() {
   const [formValues, setFormValues] = useState({
     employeeName: '',
     department: '',
+    date: '',
     description: ''
   })
 
@@ -48,10 +49,9 @@ export default function Form() {
 
       <TextField
         label="Data"
-        placeholder="01/01/2023"
         type="date"
-        id="department"
-        value={formValues.department}
+        id="date"
+        value={formValues.date}
         onChange={handleInputChange}
       />
 
