@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 import TextField from './TextField'
 import TextareaField from './TextareaField'
 
@@ -20,15 +20,30 @@ export default function Form() {
     return false
   }
 
+  const isButtonDisabled = (): boolean => {
+    const { employeeName, department, date, description } = formValues
+
+    if (!employeeName || !department || !date || !description) {
+      return true
+    }
+
+    return false
+  }
+
   const handleInputChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { id, value } = event.target
+    const { id, value } = e.target
     setFormValues({ ...formValues, [id]: value })
   }
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
+    e.preventDefault()
+    localStorage.setItem('feedback', JSON.stringify(formValues))
+  }
+
   return (
-    <form className="flex flex-col gap-4">
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
       <TextField
         label="Nome do funcionário"
         placeholder="Nome do funcionário"
@@ -63,6 +78,14 @@ export default function Form() {
         value={formValues.description}
         onChange={handleInputChange}
       />
+
+      <button
+        type="submit"
+        className="rounded bg-sky-600 p-2 font-bold disabled:cursor-not-allowed disabled:bg-slate-600  disabled:text-slate-400"
+        disabled={isButtonDisabled()}
+      >
+        Enviar feedback
+      </button>
     </form>
   )
 }
