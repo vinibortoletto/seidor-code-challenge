@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import TextField from './TextField'
 import TextareaField from './TextareaField'
 import IFeedback from '../interfaces/IFeedback'
@@ -13,6 +14,7 @@ export default function Form() {
   })
 
   const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate()
 
   const isTextareaDisabled = (): boolean => {
     const { employeeName, department } = formValues
@@ -57,6 +59,7 @@ export default function Form() {
     }
 
     setTimeout(() => setIsLoading(false), 1000)
+    navigate('/feedbacks')
   }
 
   return (
