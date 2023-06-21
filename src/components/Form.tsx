@@ -78,22 +78,24 @@ export default function Form() {
         onChange={handleInputChange}
       />
 
-      <TextField
-        label="Departamento"
-        placeholder="Departamento"
-        type="text"
-        id="department"
-        value={formValues.department}
-        onChange={handleInputChange}
-      />
+      <div className="grid gap-4 sm:grid-cols-2">
+        <TextField
+          label="Departamento"
+          placeholder="Departamento"
+          type="text"
+          id="department"
+          value={formValues.department}
+          onChange={handleInputChange}
+        />
 
-      <TextField
-        label="Data"
-        type="date"
-        id="date"
-        value={formValues.date}
-        onChange={handleInputChange}
-      />
+        <TextField
+          label="Data"
+          type="date"
+          id="date"
+          value={formValues.date}
+          onChange={handleInputChange}
+        />
+      </div>
 
       <TextareaField
         disabled={isTextareaDisabled()}
