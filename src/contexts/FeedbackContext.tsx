@@ -7,16 +7,27 @@ interface IProps {
 
 interface IContext {
   feedbacks: IFeedback[]
+  filteredFeedbacks: IFeedback[]
+  setFilteredFeedbacks: (value: IFeedback[]) => void
+  selectedEmployeeName: string
+  setSelectedEmployeeName: (value: string) => void
 }
 
 const defaultContext = {
-  feedbacks: []
+  feedbacks: [],
+  filteredFeedbacks: [],
+  setFilteredFeedbacks: () => {},
+  selectedEmployeeName: '',
+  setSelectedEmployeeName: () => {}
 }
 
 export const FeedbackContext = createContext<IContext>(defaultContext)
 
 export function FeedbackProvider({ children }: IProps) {
   const [feedbacks, setFeedbacks] = useState<IFeedback[]>([])
+  const [filteredFeedbacks, setFilteredFeedbacks] = useState<IFeedback[]>([])
+  const [selectedEmployeeName, setSelectedEmployeeName] =
+    useState<string>('Funcionário')
 
   const getLocalFeedbacks = (): void => {
     const localFeedbacks = JSON.parse(
@@ -25,14 +36,25 @@ export function FeedbackProvider({ children }: IProps) {
 
     if (localFeedbacks) {
       setFeedbacks(localFeedbacks)
+      setFilteredFeedbacks(localFeedbacks)
     }
   }
 
   const value: IContext = useMemo(
     () => ({
-      feedbacks
+      feedbacks,
+      filteredFeedbacks,
+      setFilteredFeedbacks,
+      selectedEmployeeName,
+      setSelectedEmployeeName
     }),
-    [feedbacks]
+    [
+      feedbacks,
+      filteredFeedbacks,
+      setFilteredFeedbacks,
+      selectedEmployeeName,
+      setSelectedEmployeeName
+    ]
   )
 
   useEffect(() => {
