@@ -17,8 +17,8 @@ export default function Filters() {
     feedbacks,
     filteredFeedbacks,
     setFilteredFeedbacks,
-    selectedEmployeeName,
-    setSelectedEmployeeName
+    setSelectedEmployeeName,
+    setSelectedDepartment
   } = useContext(FeedbackContext)
 
   const getUniqueEmployees = useCallback((): void => {
@@ -43,15 +43,27 @@ export default function Filters() {
     setFilteredFeedbacks(newFilteredFeedbacks)
   }
 
+  const filterByDepartment = (e: ChangeEvent<HTMLSelectElement>): void => {
+    const { value } = e.target
+
+    setSelectedDepartment(value)
+
+    const newFilteredFeedbacks = feedbacks.filter(
+      (feedback) => feedback.department === value
+    )
+
+    setFilteredFeedbacks(newFilteredFeedbacks)
+  }
+
   const getUniqueDepartments = useCallback((): void => {
-    const departments = filteredFeedbacks.map((feedback) => feedback.department)
+    const departments = feedbacks.map((feedback) => feedback.department)
 
     const uniqueDepartments = departments.filter(
       (department, index) => departments.indexOf(department) === index
     )
 
     setDepartments(uniqueDepartments)
-  }, [filteredFeedbacks])
+  }, [feedbacks])
 
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -66,7 +78,7 @@ export default function Filters() {
 
   useEffect(() => {
     getUniqueEmployees()
-    // getUniqueDepartments()
+    getUniqueDepartments()
   }, [filteredFeedbacks])
 
   return (
@@ -77,7 +89,11 @@ export default function Filters() {
         onChange={filterByEmployeeName}
       />
 
-      {/* <SelectField filterType={departments} defaultValue="Departamento" /> */}
+      <SelectField
+        filterType={departments}
+        defaultValue="Departamento"
+        onChange={filterByDepartment}
+      />
 
       <TextField
         label="Data"

@@ -11,6 +11,8 @@ interface IContext {
   setFilteredFeedbacks: (value: IFeedback[]) => void
   selectedEmployeeName: string
   setSelectedEmployeeName: (value: string) => void
+  selectedDepartment: string
+  setSelectedDepartment: (value: string) => void
 }
 
 const defaultContext = {
@@ -18,7 +20,9 @@ const defaultContext = {
   filteredFeedbacks: [],
   setFilteredFeedbacks: () => {},
   selectedEmployeeName: '',
-  setSelectedEmployeeName: () => {}
+  setSelectedEmployeeName: () => {},
+  selectedDepartment: '',
+  setSelectedDepartment: () => {}
 }
 
 export const FeedbackContext = createContext<IContext>(defaultContext)
@@ -28,6 +32,8 @@ export function FeedbackProvider({ children }: IProps) {
   const [filteredFeedbacks, setFilteredFeedbacks] = useState<IFeedback[]>([])
   const [selectedEmployeeName, setSelectedEmployeeName] =
     useState<string>('Funcionário')
+  const [selectedDepartment, setSelectedDepartment] =
+    useState<string>('Departamento')
 
   const getLocalFeedbacks = (): void => {
     const localFeedbacks = JSON.parse(
@@ -46,14 +52,18 @@ export function FeedbackProvider({ children }: IProps) {
       filteredFeedbacks,
       setFilteredFeedbacks,
       selectedEmployeeName,
-      setSelectedEmployeeName
+      setSelectedEmployeeName,
+      selectedDepartment,
+      setSelectedDepartment
     }),
     [
       feedbacks,
       filteredFeedbacks,
       setFilteredFeedbacks,
       selectedEmployeeName,
-      setSelectedEmployeeName
+      setSelectedEmployeeName,
+      selectedDepartment,
+      setSelectedDepartment
     ]
   )
 
