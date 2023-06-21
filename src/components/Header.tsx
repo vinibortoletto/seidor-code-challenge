@@ -4,7 +4,7 @@ import { AiFillEdit, AiFillFileText } from 'react-icons/ai'
 
 export default function Header() {
   return (
-    <header className="fixed left-0 top-0 flex h-20 w-full items-center justify-between  bg-gradient-to-r from-cyan-600 to-blue-900 p-4 shadow sm:px-8 md:px-16 lg:px-32">
+    <header className="fixed left-0 top-0 flex h-14 w-full items-center justify-between  bg-gradient-to-r from-cyan-600 to-blue-900 p-4 shadow sm:px-8 md:px-16 lg:px-32">
       <div className="p-2">
         <Link to="/">
           <img className="w-24" src={logo} alt="logo da empresa saidor" />
