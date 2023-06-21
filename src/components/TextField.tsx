@@ -5,7 +5,7 @@ interface IProps {
   id: string
   value: string
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  errorMessage: string
+  errorMessage?: string
 }
 
 export default function TextField(props: IProps) {
