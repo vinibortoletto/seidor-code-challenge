@@ -3,8 +3,6 @@ interface IValidateForm {
 }
 
 const validateEmployeeName = (value: string): string => {
-  console.log(value)
-
   if (value.length < 3) {
     return 'Nome deve ter no mínimo 3 caracteres'
   }
