@@ -93,12 +93,16 @@ export default function Filters() {
   return (
     <div className="mx-auto mb-6 flex max-w-2xl flex-col gap-2 sm:grid sm:grid-cols-4">
       <SelectField
+        label="Funcionário"
+        id="employeeName"
         filterType={employees}
         defaultValue="Funcionário"
         onChange={filterByEmployeeName}
       />
 
       <SelectField
+        label="Departamento"
+        id="department"
         filterType={departments}
         defaultValue="Departamento"
         onChange={filterByDepartment}
