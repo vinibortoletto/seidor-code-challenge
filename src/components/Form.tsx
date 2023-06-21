@@ -1,13 +1,22 @@
 import { ChangeEvent, FormEvent, useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import TextField from './TextField'
-import TextareaField from './TextareaField'
-import Loading from './Loading'
 import { FeedbackContext } from '../contexts/FeedbackContext'
 import maskCPF from '../utils/maskCPF'
+import validateForm from '../utils/validateForm'
+import Loading from './Loading'
+import TextField from './TextField'
+import TextareaField from './TextareaField'
 
 export default function Form() {
   const [formValues, setFormValues] = useState({
+    employeeName: '',
+    cpf: '',
+    department: '',
+    date: '',
+    description: ''
+  })
+
+  const [errorMessages, setErrorMessages] = useState({
     employeeName: '',
     cpf: '',
     department: '',
@@ -45,6 +54,10 @@ export default function Form() {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { id, value } = e.target
+
+    if (id !== 'date') {
+      setErrorMessages({ ...errorMessages, [id]: validateForm[id](value) })
+    }
 
     if (id === 'cpf') {
       const formattedCPF = maskCPF(value)
@@ -85,6 +98,7 @@ export default function Form() {
           id="employeeName"
           value={formValues.employeeName}
           onChange={handleInputChange}
+          errorMessage={errorMessages.employeeName}
         />
 
         <TextField
@@ -94,6 +108,7 @@ export default function Form() {
           id="cpf"
           value={formValues.cpf}
           onChange={handleInputChange}
+          errorMessage={errorMessages.cpf}
         />
       </div>
 
@@ -105,6 +120,7 @@ export default function Form() {
           id="department"
           value={formValues.department}
           onChange={handleInputChange}
+          errorMessage={errorMessages.department}
         />
 
         <TextField
@@ -113,6 +129,7 @@ export default function Form() {
           id="date"
           value={formValues.date}
           onChange={handleInputChange}
+          errorMessage={errorMessages.date}
         />
       </div>
 
@@ -123,6 +140,7 @@ export default function Form() {
         id="description"
         value={formValues.description}
         onChange={handleInputChange}
+        errorMessage={errorMessages.description}
       />
 
       <button

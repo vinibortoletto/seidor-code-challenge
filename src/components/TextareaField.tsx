@@ -5,10 +5,12 @@ interface IProps {
   id: string
   value: string
   onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
+  errorMessage: string
 }
 
 export default function TextareaField(props: IProps) {
-  const { disabled, label, placeholder, id, value, onChange } = props
+  const { disabled, label, placeholder, id, value, onChange, errorMessage } =
+    props
 
   return (
     <div className="flex flex-col">
@@ -27,6 +29,8 @@ export default function TextareaField(props: IProps) {
         value={value}
         onChange={onChange}
       />
+
+      <p className="mt-1 text-right text-sm text-red-500">{errorMessage}</p>
     </div>
   )
 }
