@@ -78,13 +78,6 @@ export default function Filters() {
     setDepartments(uniqueDepartments)
   }, [feedbacks])
 
-  // const handleInputChange = (
-  //   e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  // ) => {
-  //   const { value } = e.target
-  //   setDate(value)
-  // }
-
   const resetFilters = () => {
     setFilteredFeedbacks(feedbacks)
   }
