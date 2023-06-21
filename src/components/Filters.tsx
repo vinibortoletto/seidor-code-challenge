@@ -80,8 +80,8 @@ export default function Filters() {
   }
 
   const resetFilters = () => {
-    setSelectedEmployeeName('Funcionário')
-    setSelectedDepartment('Departamento')
+    setSelectedEmployeeName('')
+    setSelectedDepartment('')
     setSelectedDate('')
     setFilteredFeedbacks(feedbacks)
   }
@@ -98,6 +98,7 @@ export default function Filters() {
         id="employeeName"
         filterType={employees}
         value={selectedEmployeeName}
+        defaultValue="Funcionário"
         onChange={filterByEmployeeName}
       />
 
@@ -106,6 +107,7 @@ export default function Filters() {
         id="department"
         filterType={departments}
         value="Departamento"
+        defaultValue="Departamento"
         onChange={filterByDepartment}
       />
 

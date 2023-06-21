@@ -32,10 +32,8 @@ export const FeedbackContext = createContext<IContext>(defaultContext)
 export function FeedbackProvider({ children }: IProps) {
   const [feedbacks, setFeedbacks] = useState<IFeedback[]>([])
   const [filteredFeedbacks, setFilteredFeedbacks] = useState<IFeedback[]>([])
-  const [selectedEmployeeName, setSelectedEmployeeName] =
-    useState<string>('Funcionário')
-  const [selectedDepartment, setSelectedDepartment] =
-    useState<string>('Departamento')
+  const [selectedEmployeeName, setSelectedEmployeeName] = useState<string>('')
+  const [selectedDepartment, setSelectedDepartment] = useState<string>('')
 
   const getLocalFeedbacks = (): void => {
     const localFeedbacks = JSON.parse(
