@@ -88,7 +88,7 @@ export default function Filters() {
   }, [filteredFeedbacks])
 
   return (
-    <div>
+    <div className="mb-6 grid grid-cols-3 gap-2 sm:grid-cols-4">
       <SelectField
         filterType={employees}
         defaultValue="Funcionário"
@@ -112,7 +112,7 @@ export default function Filters() {
       <button
         type="button"
         onClick={resetFilters}
-        className="flex justify-center rounded bg-sky-600 p-2 font-bold  disabled:cursor-not-allowed disabled:bg-slate-600 disabled:text-slate-400"
+        className="col-span-3 rounded  bg-sky-600 p-2 font-bold  disabled:cursor-not-allowed disabled:bg-slate-600 disabled:text-slate-400 sm:col-auto"
       >
         Limpar filtros
       </button>
