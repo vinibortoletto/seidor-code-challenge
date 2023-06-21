@@ -4,10 +4,12 @@ import TextField from './TextField'
 import TextareaField from './TextareaField'
 import Loading from './Loading'
 import { FeedbackContext } from '../contexts/FeedbackContext'
+import maskCPF from '../utils/maskCPF'
 
 export default function Form() {
   const [formValues, setFormValues] = useState({
     employeeName: '',
+    cpf: '',
     department: '',
     date: '',
     description: ''
@@ -20,9 +22,9 @@ export default function Form() {
   const navigate = useNavigate()
 
   const isTextareaDisabled = (): boolean => {
-    const { employeeName, department } = formValues
+    const { employeeName, department, cpf, date } = formValues
 
-    if (!employeeName || !department) {
+    if (!employeeName || !department || !cpf || !date) {
       return true
     }
 
@@ -30,9 +32,9 @@ export default function Form() {
   }
 
   const isButtonDisabled = (): boolean => {
-    const { employeeName, department, date, description } = formValues
+    const { description } = formValues
 
-    if (!employeeName || !department || !date || !description) {
+    if (!description) {
       return true
     }
 
@@ -43,6 +45,13 @@ export default function Form() {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { id, value } = e.target
+
+    if (id === 'cpf') {
+      const formattedCPF = maskCPF(value)
+      setFormValues({ ...formValues, [id]: formattedCPF })
+      return
+    }
+
     setFormValues({ ...formValues, [id]: value })
   }
 
@@ -68,14 +77,25 @@ export default function Form() {
 
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-      <TextField
-        label="Nome do funcionário"
-        placeholder="Nome do funcionário"
-        type="text"
-        id="employeeName"
-        value={formValues.employeeName}
-        onChange={handleInputChange}
-      />
+      <div className="grid gap-4 sm:grid-cols-2">
+        <TextField
+          label="Nome do funcionário"
+          placeholder="Nome do funcionário"
+          type="text"
+          id="employeeName"
+          value={formValues.employeeName}
+          onChange={handleInputChange}
+        />
+
+        <TextField
+          label="cpf"
+          placeholder="CPF"
+          type="text"
+          id="cpf"
+          value={formValues.cpf}
+          onChange={handleInputChange}
+        />
+      </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <TextField
