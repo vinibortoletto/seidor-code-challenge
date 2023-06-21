@@ -79,6 +79,9 @@ export default function Filters() {
   }, [feedbacks])
 
   const resetFilters = () => {
+    setSelectedEmployeeName('')
+    setSelectedDepartment('')
+    setSelectedDate('')
     setFilteredFeedbacks(feedbacks)
   }
 
