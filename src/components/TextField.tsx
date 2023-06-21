@@ -29,7 +29,9 @@ export default function TextField(props: IProps) {
         onChange={onChange}
       />
 
-      <p className="mt-1 text-right text-sm text-red-500">{errorMessage}</p>
+      {errorMessage && (
+        <p className="mt-1 text-right text-sm text-red-500">{errorMessage}</p>
+      )}
     </div>
   )
 }
