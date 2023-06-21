@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import logo from '../assets/seidor-logo.png'
+import { AiFillEdit, AiFillFileText } from 'react-icons/ai'
 
 export default function Header() {
   return (
@@ -10,10 +11,25 @@ export default function Header() {
         </Link>
       </div>
 
-      <ul>
+      <ul className="flex gap-6">
         <li>
-          <Link to="/feedbacks" className="hover:underline">
-            Feedbacks
+          <Link to="/" className="flex items-center gap-2 hover:underline">
+            <span>
+              <AiFillEdit />
+            </span>
+            <span>Cadastrar</span>
+          </Link>
+        </li>
+
+        <li>
+          <Link
+            to="/feedbacks"
+            className="flex items-center gap-2 hover:underline"
+          >
+            <span>
+              <AiFillFileText />
+            </span>
+            <span>Feedbacks</span>
           </Link>
         </li>
       </ul>
