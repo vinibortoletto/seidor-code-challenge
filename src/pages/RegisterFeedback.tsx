@@ -5,7 +5,9 @@ export default function RegisterFeedback() {
   return (
     <>
       <Title text="Cadastrar feedback" />
-      <Form />
+      <div className="mx-auto max-w-2xl">
+        <Form />
+      </div>
     </>
   )
 }

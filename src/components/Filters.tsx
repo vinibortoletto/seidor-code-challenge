@@ -91,7 +91,7 @@ export default function Filters() {
   }, [filteredFeedbacks])
 
   return (
-    <div className="mb-6 grid grid-cols-3 gap-2 sm:grid-cols-4">
+    <div className="mx-auto mb-6 flex max-w-2xl flex-col gap-2 sm:grid sm:grid-cols-4">
       <SelectField
         filterType={employees}
         defaultValue="Funcionário"
