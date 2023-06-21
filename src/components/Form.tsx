@@ -1,9 +1,9 @@
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import TextField from './TextField'
 import TextareaField from './TextareaField'
-import IFeedback from '../interfaces/IFeedback'
 import Loading from './Loading'
+import { FeedbackContext } from '../contexts/FeedbackContext'
 
 export default function Form() {
   const [formValues, setFormValues] = useState({
@@ -14,6 +14,9 @@ export default function Form() {
   })
 
   const [isLoading, setIsLoading] = useState(false)
+  const { filteredFeedbacks, setFilteredFeedbacks } =
+    useContext(FeedbackContext)
+
   const navigate = useNavigate()
 
   const isTextareaDisabled = (): boolean => {
@@ -47,19 +50,15 @@ export default function Form() {
     e.preventDefault()
     setIsLoading(true)
 
-    const localFeedback: IFeedback[] = JSON.parse(
-      localStorage.getItem('feedbacks') as string
-    )
+    const newId = filteredFeedbacks.length + 1
 
-    if (!localFeedback) {
-      localStorage.setItem(
-        'feedbacks',
-        JSON.stringify([{ ...formValues, id: 1 }])
-      )
-    } else {
-      localFeedback.push({ ...formValues, id: localFeedback.length + 1 })
-      localStorage.setItem('feedbacks', JSON.stringify(localFeedback))
-    }
+    const newFilteredFeedbacks = [
+      ...filteredFeedbacks,
+      { ...formValues, id: newId }
+    ]
+
+    setFilteredFeedbacks(newFilteredFeedbacks)
+    localStorage.setItem('feedbacks', JSON.stringify(newFilteredFeedbacks))
 
     setTimeout(() => {
       setIsLoading(false)
