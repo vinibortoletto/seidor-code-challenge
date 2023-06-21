@@ -1,31 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
 import Title from '../components/Title'
-import IFeedback from '../interfaces/IFeedback'
 import FeedbackCard from '../components/FeedbackCard'
+import Filters from '../components/Filters'
+import { FeedbackContext } from '../contexts/FeedbackContext'
 
 export default function Feedbacks() {
-  const [feedbacks, setFeedbacks] = useState<IFeedback[]>([])
-
-  const getLocalFeedbacks = () => {
-    const localFeedbacks = JSON.parse(
-      localStorage.getItem('feedbacks') as string
-    )
-
-    if (localFeedbacks) {
-      setFeedbacks(localFeedbacks)
-    }
-  }
-
-  useEffect(() => {
-    getLocalFeedbacks()
-  }, [])
+  const { filteredFeedbacks } = useContext(FeedbackContext)
 
   return (
     <>
       <Title text="Feedbacks" />
 
+      <Filters />
+
       <div className="flex flex-col gap-4">
-        {feedbacks.map((feedback) => (
+        {filteredFeedbacks.map((feedback) => (
           <FeedbackCard key={feedback.id} feedback={feedback} />
         ))}
       </div>
