@@ -18,6 +18,7 @@ export default function Filters() {
     feedbacks,
     filteredFeedbacks,
     setFilteredFeedbacks,
+    selectedEmployeeName,
     setSelectedEmployeeName,
     setSelectedDepartment
   } = useContext(FeedbackContext)
@@ -30,6 +31,16 @@ export default function Filters() {
     )
 
     setEmployees(uniqueEmployees)
+  }, [feedbacks])
+
+  const getUniqueDepartments = useCallback((): void => {
+    const departments = feedbacks.map((feedback) => feedback.department)
+
+    const uniqueDepartments = departments.filter(
+      (department, index) => departments.indexOf(department) === index
+    )
+
+    setDepartments(uniqueDepartments)
   }, [feedbacks])
 
   const filterByEmployeeName = (e: ChangeEvent<HTMLSelectElement>): void => {
@@ -68,19 +79,9 @@ export default function Filters() {
     setFilteredFeedbacks(newFilteredFeedbacks)
   }
 
-  const getUniqueDepartments = useCallback((): void => {
-    const departments = feedbacks.map((feedback) => feedback.department)
-
-    const uniqueDepartments = departments.filter(
-      (department, index) => departments.indexOf(department) === index
-    )
-
-    setDepartments(uniqueDepartments)
-  }, [feedbacks])
-
   const resetFilters = () => {
-    setSelectedEmployeeName('')
-    setSelectedDepartment('')
+    setSelectedEmployeeName('Funcionário')
+    setSelectedDepartment('Departamento')
     setSelectedDate('')
     setFilteredFeedbacks(feedbacks)
   }
@@ -96,7 +97,7 @@ export default function Filters() {
         label="Funcionário"
         id="employeeName"
         filterType={employees}
-        defaultValue="Funcionário"
+        value={selectedEmployeeName}
         onChange={filterByEmployeeName}
       />
 
@@ -104,7 +105,7 @@ export default function Filters() {
         label="Departamento"
         id="department"
         filterType={departments}
-        defaultValue="Departamento"
+        value="Departamento"
         onChange={filterByDepartment}
       />
 

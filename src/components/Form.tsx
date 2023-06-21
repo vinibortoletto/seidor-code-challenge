@@ -25,7 +25,8 @@ export default function Form() {
   })
 
   const [isLoading, setIsLoading] = useState(false)
-  const { filteredFeedbacks, setFilteredFeedbacks } =
+
+  const { setFeedbacks, filteredFeedbacks, setFilteredFeedbacks } =
     useContext(FeedbackContext)
 
   const navigate = useNavigate()
@@ -79,6 +80,7 @@ export default function Form() {
       { ...formValues, id: newId }
     ]
 
+    setFeedbacks(newFilteredFeedbacks)
     setFilteredFeedbacks(newFilteredFeedbacks)
     localStorage.setItem('feedbacks', JSON.stringify(newFilteredFeedbacks))
 

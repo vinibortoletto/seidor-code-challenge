@@ -7,6 +7,7 @@ interface IProps {
 
 interface IContext {
   feedbacks: IFeedback[]
+  setFeedbacks: (value: IFeedback[]) => void
   filteredFeedbacks: IFeedback[]
   setFilteredFeedbacks: (value: IFeedback[]) => void
   selectedEmployeeName: string
@@ -17,6 +18,7 @@ interface IContext {
 
 const defaultContext = {
   feedbacks: [],
+  setFeedbacks: () => {},
   filteredFeedbacks: [],
   setFilteredFeedbacks: () => {},
   selectedEmployeeName: '',
@@ -49,6 +51,7 @@ export function FeedbackProvider({ children }: IProps) {
   const value: IContext = useMemo(
     () => ({
       feedbacks,
+      setFeedbacks,
       filteredFeedbacks,
       setFilteredFeedbacks,
       selectedEmployeeName,
@@ -58,6 +61,7 @@ export function FeedbackProvider({ children }: IProps) {
     }),
     [
       feedbacks,
+      setFeedbacks,
       filteredFeedbacks,
       setFilteredFeedbacks,
       selectedEmployeeName,

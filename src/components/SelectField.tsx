@@ -4,12 +4,12 @@ interface IProps {
   label: string
   id: string
   filterType: string[]
-  defaultValue: string
+  value: string
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void
 }
 
 export default function SelectField(props: IProps) {
-  const { label, id, filterType, defaultValue, onChange } = props
+  const { label, id, filterType, value, onChange } = props
 
   return (
     <div className="flex">
@@ -25,10 +25,10 @@ export default function SelectField(props: IProps) {
         id={id}
         className="w-full rounded border border-slate-700 bg-slate-950 p-2"
         onChange={onChange}
-        defaultValue={defaultValue}
+        value={value}
       >
-        <option value={defaultValue} disabled>
-          {defaultValue}
+        <option value={value} disabled>
+          {value}
         </option>
 
         {filterType.map((employee) => (
