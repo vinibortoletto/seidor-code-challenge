@@ -12,7 +12,8 @@ import { FeedbackContext } from '../contexts/FeedbackContext'
 export default function Filters() {
   const [employees, setEmployees] = useState<string[]>([])
   const [departments, setDepartments] = useState<string[]>([])
-  const [date, setDate] = useState<string>('')
+  const [selectedDate, setSelectedDate] = useState<string>('')
+
   const {
     feedbacks,
     filteredFeedbacks,
@@ -55,6 +56,18 @@ export default function Filters() {
     setFilteredFeedbacks(newFilteredFeedbacks)
   }
 
+  const filterByDate = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target
+
+    setSelectedDate(value)
+
+    const newFilteredFeedbacks = feedbacks.filter(
+      (feedback) => feedback.date === value
+    )
+
+    setFilteredFeedbacks(newFilteredFeedbacks)
+  }
+
   const getUniqueDepartments = useCallback((): void => {
     const departments = feedbacks.map((feedback) => feedback.department)
 
@@ -65,12 +78,12 @@ export default function Filters() {
     setDepartments(uniqueDepartments)
   }, [feedbacks])
 
-  const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { value } = e.target
-    setDate(value)
-  }
+  // const handleInputChange = (
+  //   e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   const { value } = e.target
+  //   setDate(value)
+  // }
 
   const resetFilters = () => {
     setFilteredFeedbacks(feedbacks)
@@ -99,8 +112,8 @@ export default function Filters() {
         label="Data"
         type="date"
         id="date"
-        value={date}
-        onChange={handleInputChange}
+        value={selectedDate}
+        onChange={filterByDate}
       />
 
       <button
