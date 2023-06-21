@@ -7,7 +7,7 @@ export default function App() {
     <>
       <Header />
 
-      <main className="mx-auto mt-24 max-w-3xl">
+      <main className="mx-auto my-24 max-w-3xl">
         <AppRoutes />
       </main>
     </>
