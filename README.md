@@ -1,80 +1,83 @@
-![reactjs-vite-tailwindcss-boilerplate](https://user-images.githubusercontent.com/16243531/217138979-b854309c-4742-4275-a705-f9fec5158217.jpg)
+<div align="center">
+  <h1>Seidor Code Challenge</h1>
+  Um aplicativo onde você pode cadastar e visualizar feedbacks. Criado para o Hackaton da empresa Seidor.
+</div>
 
-# React Tailwindcss Boilerplate build with Vite
+<hr />
 
-This is a boilerplate build with Vite, React 18, TypeScript, Vitest, Testing Library, TailwindCSS 3, Eslint and Prettier.
+<p align="center">
+  <a href="https://vb-seidor-code-challenge.vercel.app/">
+      <img alt="website mockup" src="https://i.imgur.com/iX7HWps.png" />    
+  </a>
+</p>
 
-## What is inside?
+<p align="center">
+  <a href="https://vb-seidor-code-challenge.vercel.app/" target='_blank'>Visite o app</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#writing_hand-sobre">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#information_source-como-usar">Como usar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#video_camera-demo">Demo</a>
+</p>
 
-This project uses many tools like:
+## :writing_hand: Sobre
+Nesta aplicação, criada como desafio para o Hackaton da empresa Seidor, o usuário pode cadastrar feedbacks para funcionários, adicionando o nome do funcionário, CPF (com máscara), departamento, data do feedback e a descrição do feedback, com todos os campos validados. 
 
-- [Vite](https://vitejs.dev)
-- [ReactJS](https://reactjs.org)
-- [TypeScript](https://www.typescriptlang.org)
-- [Vitest](https://vitest.dev)
-- [Testing Library](https://testing-library.com)
-- [Tailwindcss](https://tailwindcss.com)
-- [Eslint](https://eslint.org)
-- [Prettier](https://prettier.io)
+Após o cadastro do feedback, o mesmo e salvo no LocalStorage, e o usuário é levado para página de Feedbacks, onde é possível visualizar todos os feedbacks cadastrados até o momento.
 
-## Getting Started
+A aplicação também é responsiva, podendo ser visualizada por desktop ou mobile.
 
-### Install
+## :rocket: Tecnologias
 
-Create the project.
+Esse projeto foi desenvolvido usando as seguintes tecnologias:
 
-```bash
-npx degit joaopaulomoraes/reactjs-vite-tailwindcss-boilerplate my-app
-```
+-  React.js
+-  TypeScript
+-  React Router
+-  ESLint
+-  Prettier
+-  TailwindCSS
+-  React Icons
+-  VS Code
 
-Access the project directory.
+## :information_source: Como usar
 
-```bash
-cd my-app
-```
-
-Install dependencies.
-
-```bash
-pnpm install
-```
-
-Serve with hot reload at <http://localhost:5173>.
-
-```bash
-pnpm run dev
-```
-
-### Lint
+Para testar a aplicação, precisará das seguintes ferramentas:
+- Git
+- Node.js
 
 ```bash
-pnpm run lint
+# Clone o repositório:
+git clone https://github.com/vinibortoletto/seidor-code-challenge.git
+
+# Entra no diretório do projeto:
+cd seidor-code-challenge
+
+# Instale as dependências:
+npm install
+
+# Inicie a aplicação:
+npm run dev
 ```
 
-### Typecheck
+## :video_camera: Demo
+<div align='center'>
+<img  src='https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExODdlaWE5dXh1NGtyZW9pYXZwMjI0bWk2YnJhZXkxbGZnazdkNzF1NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/6W3uZWHCb4cjwahZHr/giphy.gif' alt='' />
+<img src='https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTE2eGtrbndsZTVtaDZheWdmY2V6ZHM5bzlhMGtiamR2cXhjaHF2NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/aVUimzeQLeJgEXMqCa/giphy.gif' alt='' />
+</div>
 
-```bash
-pnpm run typecheck
-```
+<br/><br/>
 
-### Build
+<br/><br/>
 
-```bash
-pnpm run build
-```
-
-### Test
-
-```bash
-pnpm run test
-```
-
-View and interact with your tests via UI.
-
-```bash
-pnpm run test:ui
-```
-
-## License
-
-This project is licensed under the MIT License.
+<p align="center">
+  Criado e desenvolvido por <b>Vinicius Bortoletto</b>
+  <br/><br/>
+  
+  <a href="https://vinibortoletto.vercel.app/">
+    <img alt="portfolio" height="30px" src="https://i.imgur.com/7lbNPnj.png" />
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://www.linkedin.com/in/vinicius-bortoletto/">
+    <img alt="linkedIn" height="30px" src="https://i.imgur.com/TQRXxhT.png" />
+  </a>
+</p>
