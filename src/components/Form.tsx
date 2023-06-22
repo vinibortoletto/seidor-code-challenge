@@ -9,16 +9,18 @@ import TextareaField from './TextareaField'
 
 export default function Form() {
   const [formValues, setFormValues] = useState({
-    employeeName: '',
+    userName: '',
     cpf: '',
+    employeeName: '',
     department: '',
     date: '',
     description: ''
   })
 
   const [errorMessages, setErrorMessages] = useState({
-    employeeName: '',
+    userName: '',
     cpf: '',
+    employeeName: '',
     department: '',
     date: '',
     description: ''
@@ -94,13 +96,13 @@ export default function Form() {
     <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
       <div className="grid gap-4 sm:grid-cols-2">
         <TextField
-          label="Nome do funcionário"
-          placeholder="Nome do funcionário"
+          label="Seu nome"
+          placeholder="Seu nome"
           type="text"
-          id="employeeName"
-          value={formValues.employeeName}
+          id="userName"
+          value={formValues.userName}
           onChange={handleInputChange}
-          errorMessage={errorMessages.employeeName}
+          errorMessage={errorMessages.userName}
         />
 
         <TextField
@@ -113,6 +115,18 @@ export default function Form() {
           errorMessage={errorMessages.cpf}
         />
       </div>
+
+      <div className="my-2 h-1 w-full bg-slate-700" />
+
+      <TextField
+        label="Nome do funcionário"
+        placeholder="Nome do funcionário"
+        type="text"
+        id="employeeName"
+        value={formValues.employeeName}
+        onChange={handleInputChange}
+        errorMessage={errorMessages.employeeName}
+      />
 
       <div className="grid gap-4 sm:grid-cols-2">
         <TextField

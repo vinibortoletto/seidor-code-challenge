@@ -2,6 +2,14 @@ interface IValidateForm {
   [key: string]: (value: string) => string
 }
 
+const validateUserName = (value: string): string => {
+  if (value.length < 3) {
+    return 'Nome deve ter no mínimo 3 caracteres'
+  }
+
+  return ''
+}
+
 const validateEmployeeName = (value: string): string => {
   if (value.length < 3) {
     return 'Nome deve ter no mínimo 3 caracteres'
@@ -35,8 +43,9 @@ const validateDescription = (value: string): string => {
 }
 
 const validateForm: IValidateForm = {
-  employeeName: (value: string) => validateEmployeeName(value),
+  userName: (value: string) => validateUserName(value),
   cpf: (value: string) => validateCpf(value),
+  employeeName: (value: string) => validateEmployeeName(value),
   department: (value: string) => validateDepartment(value),
   description: (value: string) => validateDescription(value)
 }
