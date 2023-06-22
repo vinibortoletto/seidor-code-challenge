@@ -24,7 +24,9 @@ export default function TextareaField(props: IProps) {
       <textarea
         disabled={disabled}
         id={id}
-        className="h-40 rounded  border border-slate-700 bg-slate-950 p-2  placeholder:text-slate-500 disabled:resize-none disabled:bg-slate-800/30 disabled:placeholder:text-slate-600"
+        className={`h-40 rounded  border border-slate-700 bg-slate-950 p-2  placeholder:text-slate-500 disabled:resize-none disabled:bg-slate-800/30 disabled:placeholder:text-slate-600 ${
+          errorMessage && 'border-red-500'
+        }`}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
