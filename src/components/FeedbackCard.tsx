@@ -5,9 +5,10 @@ interface IProps {
 }
 
 export default function FeedbackCard({ feedback }: IProps) {
-  const { userName, cpf, employeeName, department, date, description } =
-    feedback
-  const formattedDate = date.replaceAll('-', '/')
+  const { userName, employeeName, department, date, description } = feedback
+
+  const parts = date.split('-')
+  const formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`
 
   return (
     <div className="rounded bg-slate-800 p-4 text-lg">
