@@ -20,9 +20,9 @@
 </p>
 
 ## :writing_hand: Sobre
-Nesta aplicação, criada como desafio para o Hackaton da empresa Seidor, o usuário pode cadastrar feedbacks para funcionários, adicionando o nome do funcionário, CPF (com máscara), departamento, data do feedback e a descrição do feedback, com todos os campos validados. 
+Nesta aplicação, criada como desafio para o Hackaton da empresa Seidor, o usuário pode cadastrar feedbacks para funcionários, adicionando o seu nome, CPF, nome do funcionário, departamento, data do feedback e a descrição do feedback, com todos os campos validados. 
 
-Após o cadastro do feedback, o mesmo e salvo no LocalStorage, e o usuário é levado para página de Feedbacks, onde é possível visualizar todos os feedbacks cadastrados até o momento.
+Após o cadastro do feedback, o mesmo é salvo no LocalStorage, e o usuário é levado para página de Feedbacks, onde é possível visualizar todos os feedbacks cadastrados até o momento.
 
 A aplicação também é responsiva, podendo ser visualizada por desktop ou mobile.
 
