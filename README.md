@@ -7,7 +7,7 @@
 
 <p align="center">
   <a href="https://vb-seidor-code-challenge.vercel.app/">
-      <img alt="website mockup" src="https://i.imgur.com/iX7HWps.png" />    
+      <img alt="website mockup" src="https://i.imgur.com/8Phf1GW.png" />    
   </a>
 </p>
 
