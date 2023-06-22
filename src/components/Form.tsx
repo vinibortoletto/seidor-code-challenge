@@ -44,7 +44,7 @@ export default function Form() {
   const isButtonDisabled = (): boolean => {
     const { description } = formValues
 
-    if (!description) {
+    if (validateForm['description'](description)) {
       return true
     }
 
