@@ -20,6 +20,7 @@ export default function Filters() {
     setFilteredFeedbacks,
     selectedEmployeeName,
     setSelectedEmployeeName,
+    selectedDepartment,
     setSelectedDepartment
   } = useContext(FeedbackContext)
 
@@ -45,7 +46,7 @@ export default function Filters() {
 
   const filterByEmployeeName = (e: ChangeEvent<HTMLSelectElement>): void => {
     const { value } = e.target
-
+    resetFilters()
     setSelectedEmployeeName(value)
 
     const newFilteredFeedbacks = feedbacks.filter(
@@ -58,6 +59,7 @@ export default function Filters() {
   const filterByDepartment = (e: ChangeEvent<HTMLSelectElement>): void => {
     const { value } = e.target
 
+    resetFilters()
     setSelectedDepartment(value)
 
     const newFilteredFeedbacks = feedbacks.filter(
@@ -70,6 +72,7 @@ export default function Filters() {
   const filterByDate = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target
 
+    resetFilters()
     setSelectedDate(value)
 
     const newFilteredFeedbacks = feedbacks.filter(
@@ -106,7 +109,7 @@ export default function Filters() {
         label="Departamento"
         id="department"
         filterType={departments}
-        value="Departamento"
+        value={selectedDepartment}
         defaultValue="Departamento"
         onChange={filterByDepartment}
       />
